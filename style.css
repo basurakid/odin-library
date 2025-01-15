@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+    font-weight: normal;
+}
+
+.header {
+    background-color: #ef8354;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px
+}
+.logo {
+    display: flex;
+    align-items: center;
+    min-width: 400px;
+}
+
+.logo h1 {
+    display: inline;
+    font-size: 2.5rem;
+    margin-left: 14px;
+}
+
+.logo svg {
+    max-width: 75px;
+    max-height: 75px;
+}
+
+button {
+    background-color: transparent;
+    min-width: 50px;
+    border: 0px;
+}
+
+svg {
+    stroke: transparent;
+    stroke-width: 0px;
+}

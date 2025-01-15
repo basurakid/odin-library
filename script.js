@@ -7,6 +7,7 @@ function book(title, author, pages, read) {
     this.read = read;
 }
 
-const windAndTruth = new book("WInd and truth", "Brandon Sanderson", 1404, false)
+function addBookToLibrary(title, author, pages, read) {
+    myLibrary.push(new book(title, author, pages, read)); 
+}
 
-console.log(windAndTruth.info())
