@@ -8,13 +8,17 @@ html {
     font-weight: normal;
 }
 
+body {
+    background-color: #424449;
+}
+
 .header {
     background-color: #ef8354;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 120px
+    padding: 0 15%;
 }
 .logo {
     display: flex;
@@ -28,6 +32,11 @@ html {
     margin-left: 14px;
 }
 
+svg {
+    stroke: transparent;
+    stroke-width: 0px;
+}
+
 .logo svg {
     max-width: 75px;
     max-height: 75px;
@@ -39,7 +48,6 @@ button {
     border: 0px;
 }
 
-svg {
-    stroke: transparent;
-    stroke-width: 0px;
+button:hover {
+    cursor: pointer
 }
