@@ -51,3 +51,87 @@ button {
 button:hover {
     cursor: pointer
 }
+
+.add-book-modal {
+    width: 15%;
+    height: 40%;
+
+    overflow: hidden;
+
+    justify-self: center;
+    align-self: center;
+
+    border: 0px;
+    background-color: #424449;
+
+    --s: 50px; /* the size on the corner */
+    --t: 8px;  /* the thickness of the border */
+    --g: 0px; /* the gap between the border and image */
+  
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid #ef8354; /* the color here */
+    outline-offset: calc(-1*var(--t));
+    mask:
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+    0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+    linear-gradient(#000 0 0) content-box;
+}
+
+::backdrop {
+    background-color: #000;
+    opacity: 0.35;
+}
+
+.add-book-modal form {
+    display: flex;
+    flex-direction: column;
+    padding: 10% 10%;
+    color: #fff;
+}
+
+.add-book-modal p {
+    font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+}
+
+.add-book-modal input, select{
+    min-height: 2.4rem;
+    margin-bottom: 1rem;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #4e525b;
+    color: #fff;
+    padding-left: 5%;
+    font-size: 1rem;
+}
+
+.add-book-modal label {
+    align-items: center;
+}
+
+input:focus {
+    outline:1px solid #ef8354;
+}
+
+::placeholder {
+    color: #fff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.add-book-modal button {
+    min-height: 2.4rem;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #ef8354;
+    color: #fff;
+}
