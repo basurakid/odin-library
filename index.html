@@ -19,16 +19,32 @@
     <dialog class="add-book-modal">
         <form method="dialog" class="new-book-form">
             <p>Add new book</p>
-            <input type="text" id="title" placeholder="Title">
-            <input type="text" id="author" placeholder="Author">
-            <input type="number" id="pages" placeholder="Nº of Pages">
-            <select id="read">
+            <label for="title">Title*</label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
+            <label for="author">Author*</label>
+            <input type="text" id="author" name="author" placeholder="Author" required>
+            <label for="pages">Pages*</label>
+            <input type="number" id="pages" name="pages" placeholder="Nº of Pages" required>
+            <label for="read">Have you read the book?</label>
+            <select id="read" name="read">
                 <option value="read">Read</option>
                 <option value="not read">Not Read</option>
             </select>
             <button class="submit-book">Submit</button>
         </form>
     </dialog>
+    <main class="library">
+        <div class="book-card">
+            <div class="book-info">
+                <button class="book-remove"><svg fill="#ffffff" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M697.4 759.2l61.8-61.8L573.8 512l185.4-185.4-61.8-61.8L512 450.2 326.6 264.8l-61.8 61.8L450.2 512 264.8 697.4l61.8 61.8L512 573.8z"></path></g></svg></button>
+                <p class="book-title">Wind and Truth</p>
+                <p class="book-author">Brandon Sanderson</p>
+                <p class="book-pages">1404 pages</p>
+                <button class="book-read">Read</button>
+            </div>
+        </div>
+        
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

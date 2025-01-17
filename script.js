@@ -17,13 +17,14 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new book(title, author, pages, read)); 
 }
 
-function displayMyLibrary()
+function displayMyLibrary() {
+
+}
 
 addBookBtn.addEventListener("click", () => {
     addBookModal.showModal();
 })
 
 submitBookBtn.addEventListener("click", () => {
-    inputs bookForm.
 })
 

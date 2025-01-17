@@ -63,7 +63,6 @@ button:hover {
 
     border: 0px;
     background-color: #424449;
-
     --s: 50px; /* the size on the corner */
     --t: 8px;  /* the thickness of the border */
     --g: 0px; /* the gap between the border and image */
@@ -106,7 +105,7 @@ button:hover {
 }
 
 .add-book-modal label {
-    align-items: center;
+    display: none;
 }
 
 input:focus {
@@ -134,4 +133,65 @@ input[type=number] {
     border-radius: 10px;
     background-color: #ef8354;
     color: #fff;
+}
+
+
+.library {
+    padding: 3rem 15%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;;
+    gap: 1rem;
+}
+
+.book-card {
+    background-color: #4e525b;
+
+
+    --s: 30px; /* the size on the corner */
+    --t: 5px;  /* the thickness of the border */
+    --g: 0px; /* the gap between the border and image */
+
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid #ef8354; /* the color here */
+    outline-offset: calc(-1*var(--t));
+    mask:
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+    0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+    linear-gradient(#000 0 0) content-box;
+}
+
+.book-info {
+    padding: 0 2rem 2.5rem 2rem;
+    text-align: center;
+
+    color: #fff;
+}
+
+.book-info p {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.book-read {
+    min-height: 2rem;
+    min-width: 80%;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #ef8354;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 0.8rem;
+}
+
+.book-remove {
+    width: 40px;
+    text-align: start;
+    position: relative;
+    left: 57%;
+}
+
+.book-remove svg {
+    max-width: 40px;
 }
