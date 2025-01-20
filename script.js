@@ -3,8 +3,6 @@ const myLibrary = [];
 addBookToLibrary("Test", "Author", "900", "Read");
 addBookToLibrary("Test 2", "Author 2", "902", "Not read")
 
-console.log(myLibrary)
-
 displayMyLibrary()
 
 const addBookBtn = document.querySelector(".add-book");
@@ -23,11 +21,45 @@ function book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new book(title, author, pages, read));
+    displayMyLibrary();
+}
+function deleteBookCard(e) {
+    const removeBook = e.target
+    const bookCardRemove = removeBook.parentElement.parentElement.parentElement
+
+    const indexToRemove = bookCardRemove.dataset.bookIndex;
+    myLibrary.splice(indexToRemove, 1);
+    
+    bookCardRemove.remove();
+
+    updateBookCardsIndex();
+}
+
+function updateBookCardsIndex() {
+    const library = document.querySelector("main");
+
+    let counter = 0;
+    for (const card of library.children) {
+        card.setAttribute("data-book-index", counter)
+        counter++;
+    }
 
 }
-function deleteBookCard(bookCard) {
-    console.log("im deleting it");
-    bookCard.style.backgroundColor = "red"
+
+function changeBookReadStatus(e) {
+    const buttonRead = e.target;
+    const bookIndex = buttonRead.parentElement.parentElement.dataset.bookIndex;
+    console.log(myLibrary[bookIndex])
+        if (buttonRead.textContent === "Read") {
+            buttonRead.textContent = "Not read";
+            buttonRead.classList.toggle("book-not-read");
+            myLibrary[bookIndex].read = "Not read"
+        } else {
+            buttonRead.textContent = "Read";
+            buttonRead.classList.toggle("book-not-read")
+            myLibrary[bookIndex].read = "Read"
+        }
+        console.log(myLibrary[bookIndex]);
 }
 
 function displayMyLibrary() {
@@ -36,7 +68,6 @@ function displayMyLibrary() {
 
     for (const book of myLibrary) {
         if (book.displayed === false) {
-            console.log("Not displayed")
             const bookCard = document.createElement("div");
             bookCard.classList.add("book-card");
             bookCard.setAttribute("data-book-index", counter)
@@ -66,14 +97,17 @@ function displayMyLibrary() {
             bookInfo.appendChild(bookPages);
 
             const bookRead = document.createElement("button");
-            bookRead.classList.add("book-read");
+            bookRead.classList.add("book-read-button");
+
             if (book.read == "Read"){
                 bookRead.textContent = "Read";
             }
             else {
                 bookRead.textContent = "Not read";
-                bookRead.style.backgroundColor = "#717684"
+                bookRead.classList.add("book-not-read");
             }
+
+            bookRead.addEventListener("click", changeBookReadStatus)
             bookInfo.appendChild(bookRead);
             bookCard.appendChild(bookInfo);
 
@@ -81,8 +115,9 @@ function displayMyLibrary() {
 
             book.displayed = true;
         }
+        counter++;
     }
-    counter++;
+    
 }
 
 addBookBtn.addEventListener("click", () => {
@@ -96,5 +131,8 @@ submitBookBtn.addEventListener("click", () => {
     const read = document.querySelector("#read").value;
 
     addBookToLibrary(title, author, pages, read);
+
+    document.querySelector(".new-book-form").reset();
+    addBookModal.close();
 })
 

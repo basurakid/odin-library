@@ -174,7 +174,7 @@ input[type=number] {
     font-size: 1.2rem;
 }
 
-.book-read {
+.book-read-button {
     min-height: 2rem;
     min-width: 80%;
     border: 0px;
@@ -183,6 +183,10 @@ input[type=number] {
     color: #fff;
     font-size: 1.2rem;
     margin-top: 0.8rem;
+}
+
+.book-not-read {
+    background-color: #717684;
 }
 
 .book-remove {
