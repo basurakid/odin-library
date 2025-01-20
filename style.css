@@ -192,6 +192,7 @@ input[type=number] {
     left: 57%;
 }
 
-.book-remove svg {
+
+.book-remove img {
     max-width: 40px;
 }
