@@ -53,8 +53,8 @@ button:hover {
 }
 
 .add-book-modal {
-    width: 15%;
-    height: 40%;
+    width: 300px;
+    height: 400px;
 
     overflow: hidden;
 
@@ -82,10 +82,12 @@ button:hover {
 }
 
 .add-book-modal form {
+    
     display: flex;
     flex-direction: column;
     padding: 10% 10%;
     color: #fff;
+    justify-content: space-between;
 }
 
 .add-book-modal p {
@@ -133,6 +135,7 @@ input[type=number] {
     border-radius: 10px;
     background-color: #ef8354;
     color: #fff;
+    font-size: 1rem;
 }
 
 
@@ -147,23 +150,28 @@ input[type=number] {
 
 .book-card {
     background-color: #4e525b;
-
+    position: relative;
 
     --s: 30px; /* the size on the corner */
     --t: 5px;  /* the thickness of the border */
     --g: 0px; /* the gap between the border and image */
 
     padding: calc(var(--g) + var(--t));
-    outline: var(--t) solid #ef8354; /* the color here */
+    outline: var(--t) solid #424449; /* the color here */
     outline-offset: calc(-1*var(--t));
     mask:
     conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
     0 0/calc(100% - var(--s)) calc(100% - var(--s)),
     linear-gradient(#000 0 0) content-box;
+    transition: .2s;
 }
 
+.book-card:hover {
+    outline: var(--t) solid #ef8354;
+  }
+
 .book-info {
-    padding: 0 2rem 2.5rem 2rem;
+    padding: 2rem 2rem 2.5rem 2rem;
     text-align: center;
 
     color: #fff;
@@ -172,6 +180,8 @@ input[type=number] {
 .book-info p {
     margin-bottom: 1rem;
     font-size: 1.2rem;
+
+    position: relative;
 }
 
 .book-read-button {
@@ -191,9 +201,9 @@ input[type=number] {
 
 .book-remove {
     width: 40px;
-    text-align: start;
-    position: relative;
-    left: 57%;
+    position: absolute;
+    top:7px;
+    right:0;
 }
 
 
