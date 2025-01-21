@@ -78,7 +78,7 @@ function displayMyLibrary() {
             const removeBook = document.createElement("button");
             removeBook.classList.add("book-remove");
             const removeBookIcon = document.createElement("img");
-            removeBookIcon.setAttribute("src", "/images/cross-svgrepo-com.svg");
+            removeBookIcon.setAttribute("src", "images/cross-svgrepo-com.svg");
             removeBookIcon.setAttribute("alt", "x");
             removeBook.appendChild(removeBookIcon);
             removeBook.addEventListener("click",deleteBookCard)
