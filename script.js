@@ -1,6 +1,9 @@
-const myLibrary = [];
+if (!localStorage.getItem("library")) {
+    localStorage.setItem("library", JSON.stringify([]))
+} else {
+    displayMyLibrary()
+}
 
-displayMyLibrary()
 
 const addBookBtn = document.querySelector(".add-book");
 const addBookModal = document.querySelector(".add-book-modal");
@@ -19,15 +22,20 @@ class Book {
 }
 
 function addBookToLibrary(title, author, pages, read) {
+    const myLibrary = JSON.parse(localStorage.getItem("library"));
     myLibrary.push(new Book(title, author, pages, read));
+    localStorage.setItem("library", JSON.stringify(myLibrary))
     displayMyLibrary();
 }
+
 function deleteBookCard(e) {
     const removeBook = e.target
     const bookCardRemove = removeBook.parentElement.parentElement.parentElement
 
     const indexToRemove = bookCardRemove.dataset.bookIndex;
+    const myLibrary = JSON.parse(localStorage.getItem("library"));
     myLibrary.splice(indexToRemove, 1);
+    localStorage.setItem("library", JSON.stringify(myLibrary));
     
     bookCardRemove.remove();
 
@@ -52,18 +60,24 @@ function changeBookReadStatus(e) {
         if (buttonRead.textContent === "Read") {
             buttonRead.textContent = "Not read";
             buttonRead.classList.toggle("book-not-read");
-            myLibrary[bookIndex].read = "Not read"
+
+            const myLibrary = JSON.parse(localStorage.getItem("library"));
+            myLibrary[bookIndex].read = "Not read";
+            localStorage.setItem("library", JSON.stringify(myLibrary));
         } else {
             buttonRead.textContent = "Read";
-            buttonRead.classList.toggle("book-not-read")
-            myLibrary[bookIndex].read = "Read"
+            buttonRead.classList.toggle("book-not-read");
+            const myLibrary = JSON.parse(localStorage.getItem("library"));
+            myLibrary[bookIndex].read = "Read";
+            localStorage.setItem("library", JSON.stringify(myLibrary));
+            
         }
-        console.log(myLibrary[bookIndex]);
 }
 
 function displayMyLibrary() {
     const main = document.querySelector("main");
     let counter = 0;
+    const myLibrary = JSON.parse(localStorage.getItem("library"))
 
     for (const book of myLibrary) {
         if (book.displayed === false) {
