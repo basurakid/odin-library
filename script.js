@@ -137,7 +137,9 @@ addBookBtn.addEventListener("click", () => {
     addBookModal.showModal();
 })
 
-submitBookBtn.addEventListener("click", () => {
+bookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
@@ -148,4 +150,40 @@ submitBookBtn.addEventListener("click", () => {
     document.querySelector(".new-book-form").reset();
     addBookModal.close();
 })
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+
+title.addEventListener("input", (e) => {
+    if (title.validity.valueMissing) {
+        title.setCustomValidity("Please enter the book's title");
+    } else {
+        if (!title.value.trim()){
+            console.log("Hey no empty space on the title");
+            title.setCustomValidity("Book title must not be spaces");
+        }
+        title.setCustomValidity("");
+    }
+})
+author.addEventListener("input", (e) => {
+    if (author.validity.valueMissing) {
+        author.setCustomValidity("Please enter the book's author");
+    } else {
+        if (!title.value.trim()){
+            console.log("Hey no empty space on the author names");
+            title.setCustomValidity("Book author must not be spaces");
+        }
+        author.setCustomValidity("");
+    }
+})
+
+pages.addEventListener("input", (e) => {
+    if (pages.validity.rangeUnderflow) {
+        pages.setCustomValidity("Minimun no. of pages: 1 ");
+    } else {
+        pages.setCustomValidity("");
+    }
+})
+
 
