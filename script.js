@@ -76,6 +76,7 @@ function changeBookReadStatus(e) {
 
 function displayMyLibrary() {
     const main = document.querySelector("main");
+    main.textContent = ""
     let counter = 0;
     const myLibrary = JSON.parse(localStorage.getItem("library"))
 
@@ -139,16 +140,18 @@ addBookBtn.addEventListener("click", () => {
 
 bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    const read = document.querySelector("#read");
+
+    if (title.validity.valid && author.validity.valid && pages.validity.valid) {
+        addBookToLibrary(title.value, author.value, pages.value, read.value);
+        document.querySelector(".new-book-form").reset();
+        addBookModal.close();
+    }
     
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value;
-    const read = document.querySelector("#read").value;
-
-    addBookToLibrary(title, author, pages, read);
-
-    document.querySelector(".new-book-form").reset();
-    addBookModal.close();
 })
 
 const title = document.querySelector("#title");
@@ -156,34 +159,30 @@ const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 
 title.addEventListener("input", (e) => {
-    if (title.validity.valueMissing) {
-        title.setCustomValidity("Please enter the book's title");
-    } else {
-        if (!title.value.trim()){
-            console.log("Hey no empty space on the title");
-            title.setCustomValidity("Book title must not be spaces");
-        }
-        title.setCustomValidity("");
+    title.setCustomValidity("");
+    if (!title.value.trim()){
+        console.log(!title.value.trim(),);
+        title.setCustomValidity("Please enter a valid title name (not just spaces)");
     }
 })
 author.addEventListener("input", (e) => {
-    if (author.validity.valueMissing) {
-        author.setCustomValidity("Please enter the book's author");
-    } else {
-        if (!title.value.trim()){
-            console.log("Hey no empty space on the author names");
-            title.setCustomValidity("Book author must not be spaces");
-        }
-        author.setCustomValidity("");
+    author.setCustomValidity("");
+    if (!author.value.trim()){
+        console.log("Hey no empty space on the author names");
+        author.setCustomValidity("Please enter a valid author name (not just spaces)");
     }
 })
 
 pages.addEventListener("input", (e) => {
+    pages.setCustomValidity("");
+
     if (pages.validity.rangeUnderflow) {
         pages.setCustomValidity("Minimun no. of pages: 1 ");
-    } else {
-        pages.setCustomValidity("");
+    } else if(!/^\d+$/.test(pages.value.trim())){
+        pages.setCustomValidity("Please enter a whole number.")   
     }
 })
+
+
 
 
